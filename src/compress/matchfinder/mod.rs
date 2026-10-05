@@ -86,7 +86,8 @@ fn match_length<const MIN_MATCH8: bool>(
     'fsearch: {
         let slice_length = (data.len() - ip - length).min(258 - length);
         let (chunks, curr_remainder) = data[ip + length..][..slice_length].as_chunks::<8>();
-        let (prev_chunks, prev_remainder) = data[prev_index + length..][..slice_length].as_chunks::<8>();
+        let (prev_chunks, prev_remainder) =
+            data[prev_index + length..][..slice_length].as_chunks::<8>();
 
         for (chunk, prev_chunk) in chunks.iter().zip(prev_chunks) {
             if chunk == prev_chunk {

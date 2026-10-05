@@ -56,7 +56,8 @@ pub(crate) fn write_block<W: Write>(
     for symbol in symbols {
         match symbol {
             Symbol::LiteralRun { start, end } => {
-                let (chunks, remainder) = data[(*start - base_index) as usize..(*end - base_index) as usize]
+                let (chunks, remainder) = data
+                    [(*start - base_index) as usize..(*end - base_index) as usize]
                     .as_chunks::<4>();
                 for chunk in chunks {
                     frequencies[chunk[0] as usize] += 1;
@@ -214,7 +215,8 @@ pub(crate) fn write_block<W: Write>(
     for symbol in symbols {
         match symbol {
             Symbol::LiteralRun { start, end } => {
-                let (groups, remainder) = data[(*start - base_index) as usize..(*end - base_index) as usize]
+                let (groups, remainder) = data
+                    [(*start - base_index) as usize..(*end - base_index) as usize]
                     .as_chunks::<4>();
                 for group in groups {
                     let code0 = codes[group[0] as usize] as u64;
